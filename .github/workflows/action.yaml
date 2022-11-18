@@ -5,21 +5,20 @@ on:
     branches:
       - main
 
-stages:
-- stage: Build
-  displayName: 'Build'
-  jobs:
-  - uses: actions/checkout@v2
-  - run: make prepare
+jobs:
 
-- stage: Services
-  displayName: 'Run Services'
-  jobs:
-  - uses: actions/checkout@v2
-  - run: make services
+  stages:
+  - stage: Build
+    displayName: 'Build'
+    - uses: actions/checkout@v2
+    - run: make prepare
 
-- stage: Run
-  displayName: 'Run Script'
-  jobs:
-  - uses: actions/checkout@v2
-  - run: make run
+  - stage: Services
+    displayName: 'Run Services'
+    - uses: actions/checkout@v2
+    - run: make services
+
+  - stage: Run
+    displayName: 'Run Script'
+    - uses: actions/checkout@v2
+    - run: make run
