@@ -1,19 +1,47 @@
-name: first-github-action
+trigger:
+  batch: true
+  branches:
+    include:
+      - "*"
 
-on:
-  push:
-    branches:
-      - main
+
+resources:
+  containers:
+    - container: ubuntu
+      image: ubuntu:18.04
+
 stages:
-  - build
-  - test
- 
-build the car:
-  stage: build
-  script:
-    - echo "Build"
- 
-test the car:
-  stage: test
-  script:
-    - echo "Test"
+  - stage: STAGE1
+    jobs:
+     - job: PrintInfoStage1Job1
+       container: ubuntu
+       steps:
+          - script: |
+              echo "THIS IS STAGE 1, JOB 1"
+            displayName: "JOB 1"
+     - job: PrintInfoStage1Job2
+       dependsOn: PrintInfoStage1Job1
+       container: ubuntu
+       steps:
+          - script: |
+              echo "THIS IS STAGE 1, JOB 2"
+            displayName: "JOB 2"
+
+  - stage: STAGE2
+    dependsOn: STAGE1
+    jobs:
+      - job: PrintInfoStage2Job1
+        dependsOn: []
+        container: ubuntu
+        steps:
+          - script: |
+               echo "THIS IS THE STAGE 2, JOB 1"
+            displayName: "JOB 1"
+
+      - job: PrintInfoStage2Job2
+        container: ubuntu
+        dependsOn: []
+        steps:
+          - script: |
+               echo "THIS IS THE STAGE 2, JOB 2"
+            displayName: "JOB 2"
