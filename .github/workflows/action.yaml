@@ -6,14 +6,16 @@ on:
       - main
 
 jobs:
-  runs-on: ubuntu-latest
   uses: actions/checkout@v2
   prepare:
+    runs-on: ubuntu-latest
     steps:    
       - run: make prepare
   services:
+    runs-on: ubuntu-latest
     steps:    
       - run: make services
   run_project:
+    runs-on: ubuntu-latest
     steps:    
       - run: make run
