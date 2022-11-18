@@ -8,19 +8,16 @@ on:
 jobs:
   stages:
     - build
-      prepare:
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - run: make prepare
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v2
+          - run: make prepare
     - services
-      prepare:
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v2
         - run: make services
     - run_project
-      prepare:
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v2
