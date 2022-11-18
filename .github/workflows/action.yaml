@@ -6,8 +6,14 @@ on:
       - main
 
 jobs:
-  write-to-console:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
+  runs-on: ubuntu-latest
+  uses: actions/checkout@v2
+  prepare:
+    steps:    
       - run: make prepare
+  services:
+    steps:    
+      - run: make services
+  run_project:
+    steps:    
+      - run: make run
