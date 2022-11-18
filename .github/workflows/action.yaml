@@ -8,4 +8,5 @@ jobs:
   write-to-console:
     runs-on: ubuntu-latest
     steps:
+      - run: cd ../..
       - run: make prepare
