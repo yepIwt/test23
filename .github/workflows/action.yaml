@@ -1,3 +1,9 @@
+name: first-github-action
+
+on:
+  push:
+    branches:
+      - main
 stages:
   - build
   - test
