@@ -6,6 +6,6 @@ on:
       - main
 jobs:
   write-to-console:
-  runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
     steps:
       - run: make prepare
