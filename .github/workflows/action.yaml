@@ -1,10 +1,11 @@
 name: first-github-action
+
 on:
   push:
-    - main
-
-jobs:
-  write-to-console:
-    runs-on: ubuntu-latest
-    steps:
-      - run: echo 'Hello world!'
+    branches:
+      - main
+        jobs:
+          write-to-console:
+          runs-on: ubuntu-latest
+          steps:
+            - run: echo 'Hello world!'
