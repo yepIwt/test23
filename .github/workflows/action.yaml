@@ -9,17 +9,17 @@ stages:
 - stage: Build
   displayName: 'Build'
   jobs:
-  - uses: actions/checkout@v2
-  - run: make prepare
+    - uses: actions/checkout@v2
+    - run: make prepare
 
 - stage: Services
   displayName: 'Run Services'
   jobs:
-  - uses: actions/checkout@v2
-  - run: make services
+    - uses: actions/checkout@v2
+    - run: make services
 
 - stage: Run
   displayName: 'Run Script'
   jobs:
-  - uses: actions/checkout@v2
-  - run: make run
+    - uses: actions/checkout@v2
+    - run: make run
