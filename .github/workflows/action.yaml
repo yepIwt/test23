@@ -9,4 +9,5 @@ jobs:
   write-to-console:
     runs-on: ubuntu-latest
     steps:
-      - run: make
+      - uses: actions/checkout@v2
+      - run: make prepare
