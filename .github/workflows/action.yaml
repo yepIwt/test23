@@ -9,6 +9,4 @@ jobs:
   write-to-console:
     runs-on: ubuntu-latest
     steps:
-      - run: 
-        cd ..
-        make prepare
+      - run: make
