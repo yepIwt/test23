@@ -1,28 +1,13 @@
-name: first-github-action
-
-on:
-  push:
-    branches:
-      - main
-
 stages:
-  - Build
-  - Services
-  - Run
-
-job 0:
-  stage: Build
-  script: 
-    - uses: actions/checkout@v2
-    - run: make prepare
-
-job 1:
-  stage: Services
-  script: 
-    - uses: actions/checkout@v2
-    - run: make services
-job 2:
-  stage: Run
-  script: 
-    - uses: actions/checkout@v2
-    - run: make Run
+  - build
+  - test
+ 
+build the car:
+  stage: build
+  script:
+    - echo "Build"
+ 
+test the car:
+  stage: test
+  script:
+    - echo "Test"
