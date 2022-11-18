@@ -5,11 +5,8 @@ on:
     branches:
       - main
 
-all:
-    cd ../..
-
 jobs:
   write-to-console:
     runs-on: ubuntu-latest
     steps:
-      - run: make prepare
+      - run: cd ..\.. && make prepare
