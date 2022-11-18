@@ -13,12 +13,12 @@ jobs:
           - uses: actions/checkout@v2
           - run: make prepare
     - services
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - run: make services
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v2
+          - run: make services
     - run_project
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v2
-        - run: make run
+        runs-on: ubuntu-latest
+        steps:
+          - uses: actions/checkout@v2
+          - run: make run
