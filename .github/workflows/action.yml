@@ -7,17 +7,21 @@ on:
 
 jobs:
   MakeEnvFile:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: touch .env
-      - run: echo FASTAPI_HASH_ALGORITHM=${{ secrets.FASTAPI_HASH_ALGORITHM }} >> .env
-      - run: cat .env
+      uses: SpicyPizza/create-envfile@v1.3
+      with:
+        envkey_DEBUG: false
+        envkey_SOME_API_KEY: "123456abcdef"
+        envkey_SECRET_KEY: ${{ secrets.FASTAPI_HASH_ALGORITHM }}
+        some_other_variable: foobar
+        directory: <directory_name>
+        file_name: .env
+        fail_on_empty: false
 
   Prepare:
     runs-on: ubuntu-latest
     needs: [MakeEnvFile]
     steps:
+      - uses: actions/checkout@v2
       - run: make prepare
 
   Services:
