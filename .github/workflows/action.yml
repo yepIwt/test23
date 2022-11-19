@@ -14,7 +14,7 @@ jobs:
       - run: chmod 600 private_key
       - run: ssh -i private_key -o StrictHostKeyChecking=accept-new deployer@92.63.102.99
       - run: ssh -i private_key deployer@92.63.102.99 'cd ~/test23; git pull; echo "${{ secrets.prikol }}" > .env'
-      - run: ssh -i private_key deployer@92.63.102.99 'make prepare'
+      - run: ssh -i private_key deployer@92.63.102.99 'cd ~/test23; make prepare'
 
   Services:
     runs-on: ubuntu-latest
