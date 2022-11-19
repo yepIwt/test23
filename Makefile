@@ -2,8 +2,8 @@ include .env
 export
 
 prepare:
-	echo ${FASTAPI_HASH_ALGORITHM}
-services:
 	echo bringin up services
+services:
+	echo ${FASTAPI_HASH_ALGORITHM}
 run:
-	echo running up
+	echo ${FASTAPI_HASH_ALGORITHM}

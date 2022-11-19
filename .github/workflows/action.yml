@@ -10,9 +10,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: touch .env
-      - run: echo FASTAPI_HASH_ALGORITHM=${{ secrets.FASTAPI_HASH_ALGORITHM }} >> .env
-      - run: cat .env
       - run: make prepare
 
   Services:
@@ -20,6 +17,9 @@ jobs:
     needs: [Prepare]
     steps:
       - uses: actions/checkout@v2
+      - run: touch .env
+      - run: echo FASTAPI_HASH_ALGORITHM=${{ secrets.FASTAPI_HASH_ALGORITHM }} >> .env
+      - run: cat .env
       - run: make services
 
   Run:
@@ -27,4 +27,7 @@ jobs:
     needs: [Services]
     steps:
       - uses: actions/checkout@v2
+      - run: touch .env
+      - run: echo FASTAPI_HASH_ALGORITHM=${{ secrets.FASTAPI_HASH_ALGORITHM }} >> .env
+      - run: cat .env
       - run: make run
