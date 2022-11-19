@@ -2,8 +2,26 @@ include .env
 export
 
 prepare:
-	echo bringin up services
+	pip install -r requirements.txt
+
+prepare-local:
+	python3 -m venv .venv
+	. .venv/bin/activate
+	pip install -r requirements.txt
+
 services:
-	echo ${FASTAPI_HASH_ALGORITHM}
+	docker compose down
+	docker compose up -d postgresql
+
 run:
-	echo ${FASTAPI_HASH_ALGORITHM}
+	make migrate
+	uvicorn service.__main__:app  --host 0.0.0.0 --port=${FASTAPI_PORT} --log-level=warning --reload
+
+migrate:
+	cd migrations && alembic upgrade head
+
+downgrade:
+	cd migrations && alembic downgrade -1
+
+revision:
+	cd migrations && alembic revision --autogenerate
