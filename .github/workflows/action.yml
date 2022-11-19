@@ -6,8 +6,17 @@ on:
       - main
 
 jobs:
+  Killall:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: touch private_key && echo -e "${{ secrets.ssh_key }}" > private_key && chmod 600 private_key
+      - run: ssh -i private_key -o StrictHostKeyChecking=accept-new deployer@92.63.102.99
+      - run: ssh -i private_key deployer@92.63.102.99 'if pgrep python; then pkill python; fi'
+
   Prepare:
     runs-on: ubuntu-latest
+    needs: [Killall]
     steps:
       - uses: actions/checkout@v2
       - run: touch private_key && echo -e "${{ secrets.ssh_key }}" > private_key
