@@ -15,7 +15,7 @@ services:
 
 run:
 	make migrate
-	python -m uvicorn service.__main__:app  --host 0.0.0.0 --port=${FASTAPI_PORT} --log-level=warning --reload & disown
+	python -m uvicorn service.__main__:app  --host 0.0.0.0 --port=${FASTAPI_PORT} --log-level=warning --reload &
 
 migrate:
 	cd migrations && python -m alembic upgrade head
