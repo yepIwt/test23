@@ -10,10 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      run: >
-        touch .env
-        echo FASTAPI_HASH_ALGORITHM=${{ secrets.FASTAPI_HASH_ALGORITHM }} >> .env
-        cat .env
+      - run: touch .env
+      - run: echo FASTAPI_HASH_ALGORITHM=${{ secrets.FASTAPI_HASH_ALGORITHM }} >> .env
+      - run: cat .env
 
   Prepare:
     runs-on: ubuntu-latest
