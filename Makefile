@@ -1,5 +1,8 @@
+include .env
+export
+
 prepare:
-	echo preparing 1
+	echo FASTAPI_HASH_ALGORITHM
 services:
 	echo bringin up services
 run:
